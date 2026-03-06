@@ -1,48 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="tr">
 <head>
-    <meta charset="UTF-8">
-    <title>Robot Teknolojileri Mini Quiz</title>
+<meta charset="UTF-8">
+<title>Robot Teknolojileri Quiz</title>
+<style>
+body{
+font-family:Arial;
+background:#eef5ff;
+}
+.container{
+max-width:700px;
+margin:auto;
+margin-top:60px;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+h1{text-align:center;color:#1f4fa3}
+button{
+background:#1f6feb;
+color:white;
+border:none;
+padding:12px;
+border-radius:10px;
+width:100%;
+font-size:16px;
+}
+input{
+width:100%;
+padding:10px;
+margin:10px 0;
+}
+</style>
 </head>
+
 <body>
 
-{% if questions %}
+<div class="container">
 
-    <h2>Merhaba {{ student_name }}</h2>
-    <p>Aşağıdaki 5 soruyu cevaplayınız.</p>
+<h1>Robot Teknolojileri Quiz</h1>
 
-    <form action="/submit_quiz" method="post">
-        <input type="hidden" name="student_name" value="{{ student_name }}">
+<form method="post">
 
-        {% for q in questions %}
-            <hr>
-            <p><strong>{{ loop.index }}. {{ q.text }}</strong></p>
+<label>Ad Soyad</label>
 
-            <label><input type="radio" name="question_{{ q.id }}" value="A" required> A) {{ q.A }}</label><br>
-            <label><input type="radio" name="question_{{ q.id }}" value="B"> B) {{ q.B }}</label><br>
-            <label><input type="radio" name="question_{{ q.id }}" value="C"> C) {{ q.C }}</label><br>
-            <label><input type="radio" name="question_{{ q.id }}" value="D"> D) {{ q.D }}</label><br>
-        {% endfor %}
+<input type="text" name="name" required>
 
-        <br>
-        <button type="submit">Cevapları Gönder</button>
-    </form>
+<button type="submit">Quize Başla</button>
 
-{% else %}
+</form>
 
-    <h2>Robot Teknolojileri Quiz</h2>
+<br>
 
-    <form method="post">
-        <label>Ad Soyad:</label><br>
-        <input type="text" name="name" required>
-        <br><br>
-        <button type="submit">Quize Başla</button>
-    </form>
+<a href="/admin">Admin Paneli</a>
 
-    <br>
-    <a href="/admin">Admin paneli</a>
-
-{% endif %}
+</div>
 
 </body>
-</html>cat > templates/success.html
+</html>
