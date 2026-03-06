@@ -2,25 +2,152 @@
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Robot Teknolojileri Quiz</title>
 <style>
-body{font-family:Arial;background:#eef5ff;}
-.container{max-width:700px;margin:auto;margin-top:60px;background:white;padding:30px;border-radius:15px;box-shadow:0 10px 20px rgba(0,0,0,0.1);}
-h1{text-align:center;color:#1f4fa3}
-button{background:#1f6feb;color:white;border:none;padding:12px;border-radius:10px;width:100%;font-size:16px;}
-input{width:100%;padding:10px;margin:10px 0;}
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:linear-gradient(135deg,#eaf2ff,#f8fbff);
+    color:#222;
+}
+.container{
+    max-width:800px;
+    margin:40px auto;
+    padding:20px;
+}
+.card{
+    background:#ffffff;
+    border-radius:18px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    padding:30px;
+}
+h1,h2{
+    text-align:center;
+    color:#1f4fa3;
+}
+p{
+    line-height:1.6;
+}
+label{
+    font-weight:600;
+}
+input[type="text"]{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    margin-bottom:18px;
+    border:1px solid #cfd8e3;
+    border-radius:10px;
+    font-size:16px;
+    box-sizing:border-box;
+}
+.question-box{
+    background:#f7faff;
+    border:1px solid #dbe8ff;
+    border-radius:14px;
+    padding:18px;
+    margin-bottom:20px;
+}
+.option{
+    display:block;
+    padding:10px 12px;
+    margin:8px 0;
+    border-radius:10px;
+    background:#ffffff;
+    border:1px solid #d9e2ef;
+    cursor:pointer;
+}
+.option:hover{
+    background:#eef5ff;
+}
+button{
+    width:100%;
+    background:#1f6feb;
+    color:white;
+    border:none;
+    padding:14px;
+    border-radius:12px;
+    font-size:16px;
+    font-weight:bold;
+    cursor:pointer;
+}
+button:hover{
+    background:#1557b0;
+}
+.admin-link{
+    display:inline-block;
+    margin-top:18px;
+    text-decoration:none;
+    color:#1f6feb;
+    font-weight:bold;
+}
+.subtitle{
+    text-align:center;
+    color:#555;
+    margin-bottom:20px;
+}
 </style>
 </head>
 <body>
 <div class="container">
-<h1>Robot Teknolojileri Quiz</h1>
-<form method="post">
-<label>Ad Soyad</label>
-<input type="text" name="name" required>
-<button type="submit">Quize Başla</button>
-</form>
-<br>
-<a href="/admin">Admin Paneli</a>
+<div class="card">
+
+{% if questions %}
+
+    <h2>Merhaba {{ student_name }}</h2>
+    <p class="subtitle">Aşağıdaki 5 soruyu dikkatlice cevaplayınız.</p>
+
+    <form action="/submit_quiz" method="post">
+        <input type="hidden" name="student_name" value="{{ student_name }}">
+
+        {% for q in questions %}
+        <div class="question-box">
+            <p><strong>{{ loop.index }}. {{ q.text }}</strong></p>
+
+            <label class="option">
+                <input type="radio" name="question_{{ q.id }}" value="A" required>
+                A) {{ q.A }}
+            </label>
+
+            <label class="option">
+                <input type="radio" name="question_{{ q.id }}" value="B">
+                B) {{ q.B }}
+            </label>
+
+            <label class="option">
+                <input type="radio" name="question_{{ q.id }}" value="C">
+                C) {{ q.C }}
+            </label>
+
+            <label class="option">
+                <input type="radio" name="question_{{ q.id }}" value="D">
+                D) {{ q.D }}
+            </label>
+        </div>
+        {% endfor %}
+
+        <button type="submit">Cevapları Gönder</button>
+    </form>
+
+{% else %}
+
+    <h1>Robot Teknolojileri Quiz</h1>
+    <p class="subtitle">Lütfen ad soyad girerek quize başlayınız.</p>
+
+    <form method="post">
+        <label>Ad Soyad</label>
+        <input type="text" name="name" required>
+        <button type="submit">Quize Başla</button>
+    </form>
+
+    <div style="text-align:center;">
+        <a class="admin-link" href="/admin">Admin Paneli</a>
+    </div>
+
+{% endif %}
+
+</div>
 </div>
 </body>
 </html>
