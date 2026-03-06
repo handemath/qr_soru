@@ -1,0 +1,92 @@
+[
+{
+"id":1,
+"text":"Robot nedir?",
+"A":"Sadece uzaktan kumandalı araç",
+"B":"Programlanabilir ve belirli görevleri otomatik yapabilen makine",
+"C":"Sadece fabrikalarda kullanılan makine",
+"D":"İnsan tarafından sürekli kontrol edilen makine",
+"answer":"B"
+},
+{
+"id":2,
+"text":"Robotların çevreyi algılamasını sağlayan bileşen nedir?",
+"A":"Motor",
+"B":"Sensör",
+"C":"Vida",
+"D":"Pil",
+"answer":"B"
+},
+{
+"id":3,
+"text":"Robotlarda hareket sağlayan parçalara ne ad verilir?",
+"A":"Sensör",
+"B":"Aktüatör",
+"C":"Yazılım",
+"D":"Kamera",
+"answer":"B"
+},
+{
+"id":4,
+"text":"Robotların çalışmasını sağlayan talimatlar bütününe ne denir?",
+"A":"Donanım",
+"B":"Program",
+"C":"Vida",
+"D":"Kablo",
+"answer":"B"
+},
+{
+"id":5,
+"text":"Robotların en çok kullanıldığı alanlardan biri hangisidir?",
+"A":"Endüstri",
+"B":"Bahçe süsleme",
+"C":"Boyama",
+"D":"Kalem üretimi",
+"answer":"A"
+},
+{
+"id":6,
+"text":"Aşağıdakilerden hangisi robot kontrol kartıdır?",
+"A":"Arduino",
+"B":"Kalem",
+"C":"Defter",
+"D":"Masa",
+"answer":"A"
+},
+{
+"id":7,
+"text":"Robotların amacı nedir?",
+"A":"İnsanların işlerini kolaylaştırmak",
+"B":"Sadece oyun oynamak",
+"C":"Elektrik tüketmek",
+"D":"Süs olmak",
+"answer":"A"
+},
+{
+"id":8,
+"text":"Engel algılamada hangi sensör kullanılır?",
+"A":"Mesafe sensörü",
+"B":"Ses sensörü",
+"C":"Sıcaklık sensörü",
+"D":"Işık sensörü",
+"answer":"A"
+},
+{
+"id":9,
+"text":"Robot teknolojileri hangi alanlarda kullanılır?",
+"A":"Tıp",
+"B":"Tarım",
+"C":"Endüstri",
+"D":"Hepsi",
+"answer":"D"
+},
+{
+"id":10,
+"text":"Bir robotun beynine en yakın bileşen nedir?",
+"A":"Kontrol kartı",
+"B":"Tekerlek",
+"C":"Vida",
+"D":"Plastik parça",
+"answer":"A"
+}
+]

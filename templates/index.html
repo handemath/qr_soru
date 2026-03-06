@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Robot Teknolojileri Mini Quiz</title>
+</head>
+<body>
+
+{% if questions %}
+
+    <h2>Merhaba {{ student_name }}</h2>
+    <p>Aşağıdaki 5 soruyu cevaplayınız.</p>
+
+    <form action="/submit_quiz" method="post">
+        <input type="hidden" name="student_name" value="{{ student_name }}">
+
+        {% for q in questions %}
+            <hr>
+            <p><strong>{{ loop.index }}. {{ q.text }}</strong></p>
+
+            <label><input type="radio" name="question_{{ q.id }}" value="A" required> A) {{ q.A }}</label><br>
+            <label><input type="radio" name="question_{{ q.id }}" value="B"> B) {{ q.B }}</label><br>
+            <label><input type="radio" name="question_{{ q.id }}" value="C"> C) {{ q.C }}</label><br>
+            <label><input type="radio" name="question_{{ q.id }}" value="D"> D) {{ q.D }}</label><br>
+        {% endfor %}
+
+        <br>
+        <button type="submit">Cevapları Gönder</button>
+    </form>
+
+{% else %}
+
+    <h2>Robot Teknolojileri Quiz</h2>
+
+    <form method="post">
+        <label>Ad Soyad:</label><br>
+        <input type="text" name="name" required>
+        <br><br>
+        <button type="submit">Quize Başla</button>
+    </form>
+
+    <br>
+    <a href="/admin">Admin paneli</a>
+
+{% endif %}
+
+</body>
+</html>cat > templates/success.html
