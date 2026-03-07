@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Paneli</title>
+<style>
+body{
+    margin:0;
+    font-family:Arial, sans-serif;
+    background:#f4f7fb;
+    color:#222;
+}
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:30px auto;
+}
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+.topbar h1{
+    color:#1f4fa3;
+    margin:0;
+}
+.back-link{
+    text-decoration:none;
+    background:#1f6feb;
+    color:white;
+    padding:10px 16px;
+    border-radius:10px;
+    font-weight:bold;
+}
+.section{
+    background:white;
+    border-radius:16px;
+    padding:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    margin-bottom:24px;
+}
+h2{
+    margin-top:0;
+    color:#333;
+}
+table{
+    width:100%;
+    border-collapse:collapse;
+    overflow:hidden;
+    border-radius:12px;
+}
+th, td{
+    border:1px solid #e0e6ef;
+    padding:12px;
+    text-align:center;
+    font-size:14px;
+}
+th{
+    background:#1f4fa3;
+    color:white;
+}
+tr:nth-child(even){
+    background:#f8fbff;
+}
+.correct{
+    color:#17803d;
+    font-weight:bold;
+}
+.wrong{
+    color:#c62828;
+    font-weight:bold;
+}
+.small{
+    font-size:13px;
+    line-height:1.5;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+    <div class="topbar">
+        <h1>Admin Paneli</h1>
+        <a class="back-link" href="/">Ana Sayfa</a>
+    </div>
+
+    <div class="section">
+        <h2>Öğrenci Sonuçları</h2>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Öğrenci</th>
+                <th>Puan</th>
+                <th>Toplam</th>
+            </tr>
+            {% for r in results %}
+            <tr>
+                <td>{{ r[0] }}</td>
+                <td>{{ r[1] }}</td>
+                <td>{{ r[2] }}</td>
+                <td>{{ r[3] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+    <div class="section">
+        <h2>Verilen Cevaplar</h2>
+        <table>
+            <tr>
+                <th>Öğrenci</th>
+                <th>Soru</th>
+                <th>İşaretlenen</th>
+                <th>Doğru</th>
+                <th>Durum</th>
+            </tr>
+            {% for a in answers %}
+            <tr>
+                <td>{{ a[0] }}</td>
+                <td class="small">{{ a[1] }}</td>
+                <td>{{ a[2] }}</td>
+                <td>{{ a[3] }}</td>
+                <td>
+                    {% if a[4] == 1 %}
+                        <span class="correct">Doğru</span>
+                    {% else %}
+                        <span class="wrong">Yanlış</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+</div>
+</body>
+</html>
