@@ -1,153 +1,38 @@
-<!DOCTYPE html>
-<html lang="tr">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Robot Teknolojileri Quiz</title>
-<style>
-body{
-    margin:0;
-    font-family:Arial, sans-serif;
-    background:linear-gradient(135deg,#eaf2ff,#f8fbff);
-    color:#222;
-}
-.container{
-    max-width:800px;
-    margin:40px auto;
-    padding:20px;
-}
-.card{
-    background:#ffffff;
-    border-radius:18px;
-    box-shadow:0 10px 25px rgba(0,0,0,0.08);
-    padding:30px;
-}
-h1,h2{
-    text-align:center;
-    color:#1f4fa3;
-}
-p{
-    line-height:1.6;
-}
-label{
-    font-weight:600;
-}
-input[type="text"]{
-    width:100%;
-    padding:12px;
-    margin-top:8px;
-    margin-bottom:18px;
-    border:1px solid #cfd8e3;
-    border-radius:10px;
-    font-size:16px;
-    box-sizing:border-box;
-}
-.question-box{
-    background:#f7faff;
-    border:1px solid #dbe8ff;
-    border-radius:14px;
-    padding:18px;
-    margin-bottom:20px;
-}
-.option{
-    display:block;
-    padding:10px 12px;
-    margin:8px 0;
-    border-radius:10px;
-    background:#ffffff;
-    border:1px solid #d9e2ef;
-    cursor:pointer;
-}
-.option:hover{
-    background:#eef5ff;
-}
-button{
-    width:100%;
-    background:#1f6feb;
-    color:white;
-    border:none;
-    padding:14px;
-    border-radius:12px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-}
-button:hover{
-    background:#1557b0;
-}
-.admin-link{
-    display:inline-block;
-    margin-top:18px;
-    text-decoration:none;
-    color:#1f6feb;
-    font-weight:bold;
-}
-.subtitle{
-    text-align:center;
-    color:#555;
-    margin-bottom:20px;
-}
-</style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>Robot Teknolojileri Quiz</title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Arial; color: #1a1a1a; -webkit-text-stroke: #1a1a1a; background-color: #ffffff}
+    p.p3 {margin: 0.0px 0.0px 20.0px 0.0px; text-align: center; line-height: 19.2px; font: 12.0px Arial; color: #434343; -webkit-text-stroke: #434343}
+    p.p4 {margin: 0.0px 0.0px 12.0px 0.0px; line-height: 19.2px; font: 12.0px Arial; color: #1a1a1a; -webkit-text-stroke: #1a1a1a}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 16.0px 'Helvetica Neue'; color: #ffffff; -webkit-text-stroke: #ffffff}
+    span.s1 {font-kerning: none}
+    span.s2 {font-kerning: none; background-color: #ffffff}
+    span.s3 {font-kerning: none; background-color: #f5f9ff}
+    span.s4 {font: 12.0px Arial; font-kerning: none; color: #1a1a1a; background-color: #ffffff; -webkit-text-stroke: 0px #1a1a1a}
+    span.s5 {font-kerning: none; background-color: #1a55e6}
+  </style>
 </head>
 <body>
-<div class="container">
-<div class="card">
-
-{% if questions %}
-
-    <h2>Merhaba {{ student_name }}</h2>
-    <p class="subtitle">Aşağıdaki 5 soruyu dikkatlice cevaplayınız.</p>
-
-    <form action="/submit_quiz" method="post">
-        <input type="hidden" name="student_name" value="{{ student_name }}">
-
-        {% for q in questions %}
-        <div class="question-box">
-            <p><strong>{{ loop.index }}. {{ q.text }}</strong></p>
-
-            <label class="option">
-                <input type="radio" name="question_{{ q.id }}" value="A" required>
-                A) {{ q.A }}
-            </label>
-
-            <label class="option">
-                <input type="radio" name="question_{{ q.id }}" value="B">
-                B) {{ q.B }}
-            </label>
-
-            <label class="option">
-                <input type="radio" name="question_{{ q.id }}" value="C">
-                C) {{ q.C }}
-            </label>
-
-            <label class="option">
-                <input type="radio" name="question_{{ q.id }}" value="D">
-                D) {{ q.D }}
-            </label>
-        </div>
-        {% endfor %}
-
-        <button type="submit">Cevapları Gönder</button>
-    </form>
-
-{% else %}
-
-    <h1>Robot Teknolojileri Quiz</h1>
-    <p class="subtitle">Lütfen ad soyad girerek quize başlayınız.</p>
-
-    <form method="post">
-        <label>Ad Soyad</label>
-        <input type="text" name="name" required>
-        <button type="submit">Quize Başla</button>
-    </form>
-
-    <div style="text-align:center;">
-        <a class="admin-link" href="/admin">Admin Paneli</a>
-    </div>
-
-{% endif %}
-
-</div>
-</div>
+<p class="p1"><span class="s1">{% if questions %}</span></p>
+<h2 style="margin: 0.0px 0.0px 14.9px 0.0px; text-align: center; font: 18.0px Arial; color: #183a92; -webkit-text-stroke: #183a92"><span class="s2"><b>Merhaba {{ student_name }}</b></span></h2>
+<p class="p3"><span class="s2">Aşağıdaki 5 soruyu dikkatlice cevaplayınız.</span></p>
+<p class="p1"><span class="s1">{% for q in questions %}</span></p>
+<p class="p4"><span class="s3"><b>{{ loop.index }}. {{ q.text }}</b></span></p>
+<p class="p1"><span class="s1"><b>A) {{ q.A }}<span class="Apple-converted-space"> </span></b></span></p>
+<p class="p1"><span class="s1"><b>B) {{ q.B }}<span class="Apple-converted-space"> </span></b></span></p>
+<p class="p1"><span class="s1"><b>C) {{ q.C }}<span class="Apple-converted-space"> </span></b></span></p>
+<p class="p1"><span class="s1"><b>D) {{ q.D }}<span class="Apple-converted-space"> </span></b></span></p>
+<p class="p5"><span class="s4">{% endfor %} </span><span class="s5"><b>Cevapları Gönder</b></span><span class="s4"><span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">{% else %}</span></p>
+<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Arial; color: #183a92; -webkit-text-stroke: #183a92"><span class="s2"><b>Robot Teknolojileri Quiz</b></span></h1>
+<p class="p3"><span class="s2">Lütfen ad soyad girerek quize başlayınız.</span></p>
+<p class="p5"><span class="s4"><b>Ad Soyad</b> </span><span class="s5"><b>Quize Başla</b></span><span class="s4"><span class="Apple-converted-space"> </span></span></p>
+<p class="p1"><span class="s1">{% endif %}<span class="Apple-converted-space"> </span></span></p>
 </body>
 </html>
